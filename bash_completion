@@ -1,0 +1,15 @@
+
+have arc &&
+_arc()
+{
+    local cur prev opts
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        COMPREPLY=( $(arc -c "${cur}") )
+    else
+        COMPREPLY=()
+    fi
+
+} &&
+complete -F _arc arc
+
