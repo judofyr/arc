@@ -42,7 +42,11 @@ class Arc
     when '-c'
       complete(argv.shift.to_s)
     when '-p', '--path'
-      puts @path.to_s
+      if other = argv.shift
+        puts (@path + other).to_s
+      else
+        puts @path.to_s
+      end
     else
       find(command)
     end
