@@ -4,7 +4,8 @@ _arc()
 {
     local cur prev opts
     cur="${COMP_WORDS[COMP_CWORD]}"
-    if [ "$COMP_CWORD" -eq 1 ]; then
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    if [ "$COMP_CWORD" -eq 1 ] || ( [ "$COMP_CWORD" -eq 2 ] && [ "$prev" == "-p" ] ); then
         COMPREPLY=( $(arc -c "${cur}") )
     else
         COMPREPLY=()
