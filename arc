@@ -15,7 +15,7 @@ class Arc
   end
 
   def files
-    @files ||= @path.children.select { |p| p.directory? }
+    @files ||= @path.children.select { |p| p.directory? }.reject { |p| p.to_s =~ /.git$/ }
   end
 
   def main_for(path)
